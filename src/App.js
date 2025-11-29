@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import myPhoto from "./assets/mypic2.jpg";
 import projectpic from "./assets/webpage.png";
+import notespic from "./assets/notes.png";
+import goalpic from "./assets/goal.png";
 import {
   FaGithub,
   FaLinkedin,
@@ -38,17 +40,42 @@ export default function App() {
 
   // projects (only 1 as requested)
   const projects = [
-    {
-      id: 1,
-      title: "Weather Forecasting App",
-      subtitle: "HTML • CSS • JavaScript • API",
-      desc:
-        "A responsive Weather Forecasting app that fetches data from the OpenWeather API. Built using vanilla JavaScript with modern responsive UI, 5-day forecast & search history.",
-      code: "https://github.com/ashusingh41537-arch/weather-forecasting-web-project.git",
-      // note: removed 'live' as requested
-      image: projectpic,
-    },
-  ];
+  {
+    id: 1,
+    title: "Weather Forecasting App",
+    subtitle: "HTML • CSS • JavaScript • API",
+    desc:
+      "A responsive Weather Forecasting app using OpenWeather API with clean UI and 5-day forecast.",
+    code:
+      "https://github.com/ashusingh41537-arch/weather-forecasting-web-project.git",
+    image: projectpic,
+    live: "https://weather-forecasting-web-project.vercel.app/",
+  },
+
+  {
+    id: 2,
+    title: "Progress Tracker Web",
+    subtitle: "Fully developed using React.js! 🚀",
+    desc:
+      "This web is designed to help users stay productive by organizing tasks into Daily Goals, Monthly Goals, Pending Tasks, and History, along with a clean and modern UI.",
+    code:
+      "https://github.com/ashusingh41537-arch/Progress-Tracker-Web.git",
+    live: "https://progress-tracker-web-one.vercel.app/",
+    image: goalpic, 
+  },
+
+  {
+    id: 3,
+    title: "My Notes",
+    subtitle: "Fully developed using React.js! 🚀",
+    desc:
+      "My-Notes Brown is a digital workspace designed to help professionals and students organize their tasks, projects, and important information efficiently.",
+    code: "https://github.com/ashusingh41537-arch/My-Notes.git",
+    live: "https://my-notes-brown.vercel.app/",
+    image: notespic, 
+  },
+];
+
 
   // skills with icons (from your list)
   const skills = [
@@ -87,7 +114,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#040720] text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div className="min-h-screen text-black dark:text-white transition-colors duration-300">
+
       {/* Loader overlay */}
       {loading && (
         <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-white dark:bg-black">
@@ -113,7 +141,7 @@ export default function App() {
       )}
 
       {/* NAVBAR */}
-      <header className="sticky top-0 z-50 backdrop-blur-sm bg-white/60 dark:bg-[#0e0e10]/60 border-b border-gray-200 dark:border-gray-800">
+      <header className="sticky top-0 z-50 backdrop-blur-sm bg-yellow-400 dark:bg-[#0e0e10]/60 border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-purple-300 dark:ring-purple-700">
@@ -126,27 +154,30 @@ export default function App() {
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#home" className="hover:underline">Home</a>
-            <a href="#about" onClick={(e) => { e.preventDefault(); setShowAbout(true); }} className="hover:underline">About</a>
-            <a href="#projects" className="hover:underline">Projects</a>
-            <a href="#skills" className="hover:underline">Skills</a>
-            <a href="#contact" className="hover:underline">Contact</a>
+            <a href="#home" className="hover:underline transition-all duration-300 ease-in-out hover:scale-110 hover:text-purple-600">Home</a>
+            <a href="#about" onClick={(e) => { e.preventDefault(); setShowAbout(true); }} className="hover:underline transition-all duration-300 ease-in-out hover:scale-110 hover:text-purple-600">About</a>
+            <a href="#projects" className="hover:underline transition-all duration-300 ease-in-out hover:scale-110 hover:text-purple-600">Projects</a>
+            <a href="#skills" className="hover:underline transition-all duration-300 ease-in-out hover:scale-110 hover:text-purple-600">Skills</a>
+            <a href="#contact" className="hover:underline transition-all duration-300 ease-in-out hover:scale-110 hover:text-purple-600">Contact</a>
 
             {/* GitHub + LinkedIn icons */}
-            <a href="https://github.com/ashusingh41537-arch" target="_blank" rel="noreferrer" className="ml-3 text-xl hover:text-purple-600">
+            <a href="https://github.com/ashusingh41537-arch" target="_blank" rel="noreferrer" className="ml-3 text-xl hover:text-purple-600 transition-all duration-300 ease-in-out hover:scale-110">
               <FaGithub />
             </a>
-            <a href="https://www.linkedin.com/in/pratapakshay" target="_blank" rel="noreferrer" className="text-xl hover:text-blue-500">
+            <a href="https://www.linkedin.com/in/pratapakshay" target="_blank" rel="noreferrer" className="text-xl hover:text-blue-500 transition-all duration-300 ease-in-out hover:scale-110">
               <FaLinkedin />
             </a>
-          </nav>
 
-          {/* mobile menu button */}
-          <div className="md:hidden flex items-center gap-3">
-            <button onClick={() => setIsDark((s) => !s)} className="p-2 rounded-md bg-gray-100 dark:bg-gray-800">
-              {isDark ? <FaMoon /> : <FaSun />}
+            {/* Dark/Light Toggle */}
+            <button
+             onClick={() => setIsDark(!isDark)}
+             className="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 transition-colors duration-500 transition-all duration-300 ease-in-out hover:scale-110"
+             >
+             {isDark ? <FaSun /> : <FaMoon />}
             </button>
-          </div>
+
+          </nav>
+          
         </div>
       </header>
 
@@ -155,32 +186,32 @@ export default function App() {
         {/* HERO */}
         <section id="home" className="grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 font-semibold">Web Developer • Java Full Stack</p>
+            <p className="text-sm font-bold text-gray-600 dark:text-gray-300 ">Web Developer • Java Full Stack</p>
 
             <h1 className="mt-3 text-3xl md:text-4xl font-extrabold">
               Hi, I'm <span className="text-purple-500">Akshay Pratap Singh</span>
             </h1>
 
-            <p className="mt-4 text-gray-700 dark:text-gray-300 max-w-xl">
+            <p className="mt-4 font-bold text-gray-700 dark:text-gray-300 max-w-xl">
               I build clean, responsive web apps. Currently learning full-stack Java + Spring Boot and improving DSA in Java.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#projects" className="px-4 py-2 rounded bg-purple-600 text-white">See Projects</a>
+              <a href="#projects" className="px-4 py-2 rounded bg-purple-600 text-white transition-all duration-300 ease-in-out hover:scale-110">See Projects</a>
 
               <a
                 href="mailto:ashusingh41537@gmail.com"
-                className="px-4 py-2 rounded border border-gray-300 dark:border-gray-700 bg-blue-900"
+                className="px-4 py-2 rounded border border-gray-300 dark:border-gray-700 bg-blue-900 text-white transition-all duration-300 ease-in-out hover:scale-110"
               >
                 Contact Me
               </a>
 
-              <a href="https://github.com/ashusingh41537-arch" target="_blank" rel="noreferrer" className="px-4 py-2 rounded bg-white text-black">
+              <a href="https://github.com/ashusingh41537-arch" target="_blank" rel="noreferrer" className="px-4 py-2 rounded border border-gray-300 dark:border-gray-700 bg-teal-600 text-white transition-all duration-300 ease-in-out hover:scale-110">
                 GitHub
               </a>
             </div>
 
-            <div className="mt-6 text-sm text-gray-600 dark:text-gray-300">
+            <div className="mt-6 text-sm text-2xl text-blue-900 dark:text-gray-300">
               <div><strong>Location:</strong> Lucknow, UP, India</div>
               <div><strong>Email:</strong> ashusingh41537@gmail.com</div>
               <div><strong>Contact:</strong> 6393010328</div>
@@ -195,7 +226,7 @@ export default function App() {
         </section>
 
         {/* ABOUT (small section — also available via popup) */}
-        <section id="about-inline" className="mt-12 bg-white dark:bg-[#0b0b0b] rounded-2xl p-6 shadow border border-gray-200 dark:border-gray-800">
+        <section id="about-inline" className="mt-12 bg-yellow-300 dark:bg-[#0b0b0b] rounded-2xl p-6 shadow border border-gray-400 dark:border-gray-800">
           <h2 className="text-2xl font-semibold text-purple-500">About Me</h2>
           <div className="mt-3 text-gray-700 dark:text-gray-300 whitespace-pre-line">
 {`👋 Hi there!
@@ -217,7 +248,7 @@ I’m continuously learning new technologies and enhancing my development and pr
 I’m always open to exciting opportunities, collaborations, and discussions about technology and innovation.`}
           </div>
           <div className="mt-4">
-            <button onClick={() => setShowAbout(true)} className="px-4 py-2 rounded bg-purple-600 text-white">Read More / Open About</button>
+            <button onClick={() => setShowAbout(true)} className="px-4 py-2 rounded bg-purple-600 text-white transition-all duration-300 ease-in-out hover:scale-105">Read More / Open About</button>
           </div>
         </section>
 
@@ -227,7 +258,7 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
 
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {skills.map((s) => (
-              <div key={s.name} className="p-4 bg-gray-100 dark:bg-[#111] rounded-lg border border-gray-200 dark:border-gray-800 flex flex-col items-center gap-2">
+              <div key={s.name} className="p-4 bg-pink-200 dark:bg-[#111] rounded-lg border border-gray-200 dark:border-gray-800 flex flex-col items-center gap-2 transition-all duration-300 ease-in-out hover:scale-110">
                 <div className="text-3xl">{s.icon}</div>
                 <div className="text-sm font-medium">{s.name}</div>
               </div>
@@ -239,12 +270,12 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
         <section id="projects" className="mt-8">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold text-purple-500">Projects</h2>
-            <div className="text-sm text-gray-500 dark:text-gray-400">Click card for details</div>
+            <div className="text-sm text-blue-900 dark:text-gray-400">Click card for details</div>
           </div>
 
           <div className="mt-4 grid sm:grid-cols-1 md:grid-cols-3 gap-6">
             {projects.map((p) => (
-              <article key={p.id} className="bg-white dark:bg-[#0b0b0b] rounded-xl shadow border border-gray-200 dark:border-gray-800 overflow-hidden">
+              <article key={p.id} className="bg-green-200 dark:bg-[#0b0b0b] rounded-xl shadow border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300 ease-in-out hover:scale-105">
                 <div className="h-44 overflow-hidden">
                   <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
                 </div>
@@ -254,9 +285,9 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
                   <div className="text-sm text-gray-500 dark:text-gray-400">{p.subtitle}</div>
                   <p className="mt-2 text-gray-700 dark:text-gray-300 text-sm">{p.desc}</p>
 
-                  <div className="mt-4 flex gap-2">
-                    <button onClick={() => setModalProject(p)} className="px-3 py-1 rounded bg-purple-600 text-white">Details</button>
-                    <a href={p.code} target="_blank" rel="noreferrer" className="px-3 py-1 rounded border border-gray-300 dark:border-gray-700">Code</a>
+                  <div className="mt-4 flex gap-2 ">
+                    <button onClick={() => setModalProject(p)} className="px-3 py-1 rounded border bg-pink-400 dark:bg-purple-600 text-white transition-all duration-300 ease-in-out hover:scale-105">Details</button>
+                    <a href={p.code} target="_blank" rel="noreferrer" className="px-3 py-1 rounded border bg-green-500 dark:bg-teal-500 transition-all duration-300 ease-in-out hover:scale-105">Code</a>
                   </div>
                 </div>
               </article>
@@ -265,7 +296,7 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="mt-8 bg-white dark:bg-[#0b0b0b] rounded-2xl p-6 shadow border border-gray-200 dark:border-gray-800">
+        <section id="contact" className="mt-8 bg-yellow-200 dark:bg-[#0b0b0b] rounded-2xl p-6 shadow border border-gray-200 dark:border-gray-800">
           <h2 className="text-2xl font-semibold text-purple-500">Contact</h2>
 
           <div className="mt-4 grid md:grid-cols-2 gap-6">
@@ -274,8 +305,8 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
               <p className="mt-2 text-gray-700 dark:text-gray-300">Phone: <a href="tel:+916393010328" className="text-purple-400">6393010328</a></p>
 
               <div className="mt-4 flex items-center gap-4">
-                <a href="https://github.com/ashusingh41537-arch" target="_blank" rel="noreferrer" className="text-2xl"><FaGithub /></a>
-                <a href="https://www.linkedin.com/in/pratapakshay" target="_blank" rel="noreferrer" className="text-2xl"><FaLinkedin /></a>
+                <a href="https://github.com/ashusingh41537-arch" target="_blank" rel="noreferrer" className="text-2xl transition-all duration-300 ease-in-out hover:scale-110"><FaGithub /></a>
+                <a href="https://www.linkedin.com/in/pratapakshay" target="_blank" rel="noreferrer" className="text-2xl transition-all duration-300 ease-in-out hover:scale-110"><FaLinkedin /></a>
               </div>
             </div>
 
@@ -296,8 +327,8 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
                 <input name="email" placeholder="Your email" type="email" className="w-full p-3 rounded border border-gray-300 dark:border-gray-700 mb-2 bg-white dark:bg-[#0b0b0b] text-black dark:text-white" />
                 <textarea name="message" placeholder="Message" rows={5} className="w-full p-3 rounded border border-gray-300 dark:border-gray-700 mb-2 bg-white dark:bg-[#0b0b0b] text-black dark:text-white" />
                 <div className="flex gap-3">
-                  <button type="submit" className="px-4 py-2 rounded bg-purple-600 text-white">Send</button>
-                  <button type="reset" className="px-4 py-2 rounded border">Reset</button>
+                  <button type="submit" className="px-4 py-2 rounded border bg-green-300 dark:bg-purple-500 transition-all duration-300 ease-in-out hover:scale-110 ">Send</button>
+                  <button type="reset" className="px-4 py-2 rounded border bg-pink-300 dark:bg-blue-900 transition-all duration-300 ease-in-out hover:scale-110">Reset</button>
                 </div>
               </form>
             </div>
@@ -340,17 +371,16 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
   `}</style>
 </section>
 
-
         {/* FOOTER */}
-        <footer className="mt-12 mb-8 text-center text-gray-500 dark:text-gray-400">
+        <footer className="mt-12 mb-8 font-bold text-center text-lg text-blue-700 dark:text-gray-400">
           © {new Date().getFullYear()} Akshay Pratap Singh — Built with ❤️
         </footer>
       </main>
-
+    
       {/* PROJECT MODAL */}
       {modalProject && (
         <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 p-6">
-          <div className="bg-white dark:bg-[#0b0b0b] rounded-xl max-w-2xl w-full p-6 border border-gray-200 dark:border-gray-800">
+          <div className="bg-yellow-200 dark:bg-[#0b0b0b] rounded-xl max-w-2xl w-full p-6 border border-gray-200 dark:border-gray-800">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-xl font-bold">{modalProject.title}</h3>
@@ -363,11 +393,27 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
 
             <ul className="mt-3 list-disc pl-5 text-gray-700 dark:text-gray-300">
               <li>Code: <a href={modalProject.code} target="_blank" rel="noreferrer" className="text-purple-500">Repository</a></li>
-              <li>Live: Not available</li>
+              <li>
+                 <b>Live:</b>{" "}
+                    {modalProject.live ? (
+                    <a
+                     href={modalProject.live}
+                     target="_blank"
+                     className="bg-green-600 px-1 py-1 text-white rounded-md "
+                     >
+                      🟢 LIVE
+                    </a>
+                    ) : (
+                    <span className="bg-red-600 px-2 py-1 text-white rounded-md">
+                      🔴 Not Available
+                    </span>
+                    )}
+              </li>
+
             </ul>
 
             <div className="mt-6 text-right">
-              <button onClick={() => setModalProject(null)} className="px-4 py-2 rounded border">Close</button>
+              <button onClick={() => setModalProject(null)} className="px-4 py-2 rounded border bg-green-300 dark:bg-purple-500 transition-all duration-300 ease-in-out hover:scale-105">Close</button>
             </div>
           </div>
         </div>
@@ -377,7 +423,7 @@ I’m always open to exciting opportunities, collaborations, and discussions abo
       {/* About popup (separate) */}
 {showAbout && (
   <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70 p-6">
-    <div className="bg-white dark:bg-[#0b0b0b] rounded-xl max-w-3xl w-full p-6 border border-gray-200 dark:border-gray-800 overflow-y-auto max-h-[85vh]">
+    <div className="bg-green-200 dark:bg-[#0b0b0b] rounded-xl max-w-3xl w-full p-6 border border-gray-200 dark:border-gray-800 overflow-y-auto max-h-[85vh]">
 
       <div className="flex justify-between items-start gap-4">
         <h2 className="text-2xl font-bold text-purple-500">About Me</h2>
@@ -436,7 +482,25 @@ I’m always open to exciting opportunities, collaborations, and tech discussion
         }
         .animate-float { animation: floating 4s ease-in-out infinite; }
         .animate-float-short { animation: floating 3s ease-in-out infinite; }
+      
+        html {
+           transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        svg {
+          transition: fill 0.4s ease, stroke 0.4s ease, color 0.4s ease;
+         }
+
+      * {
+        transition: 
+         background-color 0.4s ease,
+          color 0.4s ease,
+          border-color 0.4s ease,
+          fill 0.4s ease,
+          stroke 0.4s ease;
+        }
       `}</style>
+
     </div>
   );
 } 
