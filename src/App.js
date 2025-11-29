@@ -19,11 +19,11 @@ import {
   FaSpinner,
   FaDatabase,
   FaBrain,
-} from "react-icons/fa";
-import { SiSpringboot, SiMysql, SiNextdotjs } from "react-icons/si";
+} from "react-icons/fa6";
+import { SiSpringboot, SiMysql, SiNextdotjs } from "react-icons/fa6";
 
 export default function App() {
-  // page states
+    // page states
   const [loading, setLoading] = useState(true); // loader
   const [isDark, setIsDark] = useState(() => {
     // initial theme from localStorage or system preference
